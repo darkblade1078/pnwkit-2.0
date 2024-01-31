@@ -55,7 +55,7 @@ export default async function treasureTradeQuery(
 
     this.setRateLimit(res.rateLimit);
 
-    if (paginator) return res.data.treasre_trade as treasureTradePaginator;
+    if (paginator) return res.data.treasure_trades as treasureTradePaginator;
 
-    return res.data.treasre_trades.data as treasureTrade[];
+    return res.data.treasure_trades.data as treasureTrade[];
 }
