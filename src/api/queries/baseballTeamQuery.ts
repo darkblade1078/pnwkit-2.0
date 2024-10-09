@@ -53,7 +53,7 @@ export default async function baseballTeamQuery(
 
   this.setRateLimit(res.rateLimit);
 
-  if (paginator) return res.data.nations as baseballTeamPaginator;
+  if (paginator) return res.data.baseball_teams$ as baseballTeamPaginator;
 
-  return res.data.nations.data as baseballTeam[];
+  return res.data.baseball_teams$.data as baseballTeam[];
 }
