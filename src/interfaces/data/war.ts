@@ -130,3 +130,12 @@ export type tiering = {
     45: number;
     50: number;
 }
+
+export type militaryResearch = {
+  ground_capacity: number
+  ground_cost: number
+  air_capacity: number
+  air_cost: number
+  naval_capacity: number
+  naval_cost: number
+}

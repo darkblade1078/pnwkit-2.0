@@ -1,5 +1,6 @@
 import { Maybe, Scalars } from "..";
 import { award } from "../data/other";
+import { militaryResearch } from '../data/war';
 import { paginatorInfo, sortOrder } from "../other";
 import { alliance, alliancePositionEnum, allliancePosition } from "./alliance";
 import { bankrec } from "./bank";
@@ -219,12 +220,15 @@ export type nation = {
     clinical_research_center?: Maybe<Scalars['Boolean']>
     specialized_police_training_program?: Maybe<Scalars['Boolean']>
     advanced_engineering_corps?: Maybe<Scalars['Boolean']>
+    advanced_pirate_economy?: Maybe<Scalars['Boolean']>
     government_support_agency?: Maybe<Scalars['Boolean']>
     research_and_development_center?: Maybe<Scalars['Boolean']>
-    resource_produciton_center?: Maybe<Scalars['Boolean']>
+    activity_center?: Maybe<Scalars['Boolean']>
     metropolitan_planning?: Maybe<Scalars['Boolean']>
     military_salvage?: Maybe<Scalars['Boolean']>
     fallout_shelter?: Maybe<Scalars['Boolean']>
+    military_research_center?: Maybe<Scalars['Boolean']>
+    military_doctrine?: Maybe<Scalars['Boolean']>
     wars_won?: Maybe<Scalars['Int']>
     wars_lost?: Maybe<Scalars['Int']>
     tax_id?: Maybe<Scalars['ID']>
@@ -263,4 +267,6 @@ export type nation = {
     awards?: Maybe<award[]>
     bulletins?: Maybe<Scalars['Int']>
     bulletin_replies?: Maybe<Scalars['Int']>
+    cities_discount?: Maybe<Scalars['Float']>
+    military_research?: Maybe<militaryResearch>
 }
