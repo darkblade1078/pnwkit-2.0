@@ -1,16 +1,18 @@
-import { airBattleData, groundBattleData, seaBattleData } from "../../interfaces/data/war";
+import { airBattleData, groundBattleData, militaryResearch, seaBattleData } from "../../interfaces/data/war";
 import accurateRounding from "../other/accurateRounding";
 import getPercentage from "../other/getPercentage";
 
 /**
  * Get the results from a ground battle
- * @param {number} attackingSoldiers The attacker's soldiers
+ * @param {number} attackingSoldiers 
  * @param {number} attackingTanks The attacker's tanks
  * @param {number} defendingSoldiers The defender's soldiers
  * @param {number} defendingTanks The defender's tanks
+ * @param {number} [attackingGroundCost=0] 
+ * @param {number} [defendingGroundCost=0] 
  * @returns {groundBattleData} ground battle results
  */
-export function groundBattle(attackingSoldiers: number, attackingTanks: number, defendingSoldiers: number, defendingTanks: number): groundBattleData {
+export function groundBattle(attackingSoldiers: number, attackingTanks: number, defendingSoldiers: number, defendingTanks: number, attackingGroundCost: number = 0, defendingGroundCost: number = 0): groundBattleData {
     let attackingSoldierValue = attackingSoldiers * 1.75;
     let attackingTankValue = attackingTanks * 40;
     let defendingSoldierValue = attackingSoldiers * 1.75;
@@ -87,13 +89,13 @@ export function groundBattle(attackingSoldiers: number, attackingTanks: number, 
     }
 
     results.attacker.soldierCasualties /= 100;
-    results.attacker.steelConsumed = (results.attacker.tankCasualties * 0.5) / 100;
+    results.attacker.steelConsumed = (results.attacker.tankCasualties * (0.5 - 0.01 * attackingGroundCost)) / 100;
     results.attacker.tankCasualties /= 100;
     results.attacker.gasConsumed /= 100;
     results.attacker.munitionsConsumed /= 100;
 
     results.defender.soldierCasualties /= 100;
-    results.defender.steelConsumed = (results.defender.tankCasualties * 0.5) / 100;
+    results.defender.steelConsumed = (results.defender.tankCasualties * (0.5 - 0.01 * defendingGroundCost)) / 100;
     results.defender.tankCasualties /= 100;
     results.defender.gasConsumed /= 100;
     results.defender.munitionsConsumed /= 100;
@@ -106,9 +108,11 @@ export function groundBattle(attackingSoldiers: number, attackingTanks: number, 
  * @param {number} attackingAircraft The attacker's aircraft
  * @param {number} defendingAircraft The attacker's aircraft
  * @param {boolean} dogfight If the battle is a dog fight
+ * @param {number} [attackingAirCost=0] 
+ * @param {number} [defendingAirCost=0] 
  * @returns {airBattleData} air battle results
  */
-export function airBattle(attackingAircraft: number, defendingAircraft: number, dogfight: boolean): airBattleData {
+export function airBattle(attackingAircraft: number, defendingAircraft: number, dogfight: boolean, attackingAirCost: number = 0, defendingAirCost: number = 0): airBattleData {
     let attackingValue = attackingAircraft * 3;
     let defendingValue = defendingAircraft * 3;
 
@@ -179,13 +183,13 @@ export function airBattle(attackingAircraft: number, defendingAircraft: number, 
         }
     }
 
-    results.attacker.aluminumConsumed = (results.attacker.aircraftCasualties * 5) / 100;
+    results.attacker.aluminumConsumed = (results.attacker.aircraftCasualties * (10 - 0.2 * attackingAirCost)) / 100;
     results.attacker.aircraftCasualties /= 100;
     results.attacker.gasConsumed /= 100;
     results.attacker.munitionsConsumed /= 100;
 
 
-    results.defender.aluminumConsumed = (results.defender.aircraftCasualties * 5) / 100;
+    results.defender.aluminumConsumed = (results.defender.aircraftCasualties * (10 - 0.2 * defendingAirCost)) / 100;
     results.defender.aircraftCasualties /= 100;
     results.defender.gasConsumed /= 100;
     results.defender.munitionsConsumed /= 100;
@@ -197,9 +201,11 @@ export function airBattle(attackingAircraft: number, defendingAircraft: number, 
  * Get the results from a sea battle
  * @param {number} attackingShips The attacker's ships
  * @param {number} defendingShips The attacker's ships
+ * @param {number} [attackingNavalCost=0] 
+ * @param {number} [defendingNavalCost=0] 
  * @returns {seaBattleData} sea battle results
  */
-export function seaBattle(attackingShips: number, defendingShips: number): seaBattleData {
+export function seaBattle(attackingShips: number, defendingShips: number, attackingNavalCost: number = 0, defendingNavalCost: number = 0): seaBattleData {
     let attackingValue = attackingShips * 4;
     let defendingValue = defendingShips * 4;
 
@@ -264,13 +270,13 @@ export function seaBattle(attackingShips: number, defendingShips: number): seaBa
         }
     }
 
-    results.attacker.steelConsumed = (results.attacker.shipCasualties * 30) / 100;
+    results.attacker.steelConsumed = (results.attacker.shipCasualties * (30 - 0.5 * attackingNavalCost)) / 100;
     results.attacker.shipCasualties /= 100;
     results.attacker.gasConsumed /= 100;
     results.attacker.munitionsConsumed /= 100;
 
 
-    results.defender.steelConsumed = (results.defender.shipCasualties * 30) / 100;
+    results.defender.steelConsumed = (results.defender.shipCasualties * (30 - 0.5 * defendingNavalCost)) / 100;
     results.defender.shipCasualties /= 100;
     results.defender.gasConsumed /= 100;
     results.defender.munitionsConsumed /= 100;
