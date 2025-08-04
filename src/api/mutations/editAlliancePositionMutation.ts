@@ -1,6 +1,6 @@
 import { Kit } from '../..';
 import { editAlliancePositionPaginator, mutationCreateAlliancePositionArgs } from '../../interfaces/mutations/alliancePosition';
-import { allliancePosition } from '../../interfaces/queries/alliance';
+import { alliancePosition } from '../../interfaces/queries/alliance';
 import GraphQL from '../../services/GraphQL';
 
 export interface Parameters {
@@ -28,9 +28,9 @@ export interface Parameters {
  * @param {Parameters} params Query parameters to customize your results
  * @param {string} query The graphql query to get info with
  * @param {boolean} paginator If true it will return paginator info
- * @return {Promise<allliancePosition| editAlliancePositionPaginator>}
+ * @return {Promise<alliancePosition| editAlliancePositionPaginator>}
  */
-export default async function editAlliancePositionMutation(this: Kit, params: Parameters, query: string, apiKey: string, paginator?: false): Promise<allliancePosition>;
+export default async function editAlliancePositionMutation(this: Kit, params: Parameters, query: string, apiKey: string, paginator?: false): Promise<alliancePosition>;
 export default async function editAlliancePositionMutation(this: Kit, params: Parameters, query: string, apiKey: string, paginator: true): Promise<editAlliancePositionPaginator>;
 export default async function editAlliancePositionMutation(
   this: Kit,
@@ -38,7 +38,7 @@ export default async function editAlliancePositionMutation(
   query: string,
   apiKey: string,
   paginator?: boolean,
-): Promise<allliancePosition | editAlliancePositionPaginator> {
+): Promise<alliancePosition | editAlliancePositionPaginator> {
   const argsToParameters = GraphQL.generateParameters(params as mutationCreateAlliancePositionArgs);
 
   const res = await GraphQL.makeMutationCall(`
@@ -74,5 +74,5 @@ export default async function editAlliancePositionMutation(
     return res.data.editAlliancePosition as editAlliancePositionPaginator;
 
 
-  return res.data.editAlliancePosition as allliancePosition;
+  return res.data.editAlliancePosition as alliancePosition;
 }

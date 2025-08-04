@@ -33,11 +33,11 @@ export type queryActivityStatsArgs = {
 
 export type activityStat = {
     __typename?: 'activityStat'
+    total_nations?: Maybe<Scalars['Int']>
+    nations_created?: Maybe<Scalars['Int']>
     active_1_day?: Maybe<Scalars['Int']>
-    active_1_month?: Maybe<Scalars['Int']>
-    active_1_week?: Maybe<Scalars['Int']>
     active_2_days?: Maybe<Scalars['Int']>
     active_3_days?: Maybe<Scalars['Int']>
-    nations_created?: Maybe<Scalars['Int']>
-    total_nations?: Maybe<Scalars['Int']>
+    active_1_week?: Maybe<Scalars['Int']>
+    active_1_month?: Maybe<Scalars['Int']>
 }

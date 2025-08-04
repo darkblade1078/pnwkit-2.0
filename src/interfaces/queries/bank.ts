@@ -66,8 +66,8 @@ export type bankrec = {
     sender_type?: Maybe<Scalars['Int']>
     sender?: Maybe<nation>
     receiver_id?: Maybe<Scalars['ID']>
-    receiver?: Maybe<nation>
     receiver_type?: Maybe<Scalars['Int']>
+    receiver?: Maybe<nation>
     banker_id?: Maybe<Scalars['ID']>
     banker?: Maybe<nation>
     note?: Maybe<Scalars['String']>

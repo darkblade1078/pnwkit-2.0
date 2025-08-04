@@ -1,6 +1,6 @@
 import { Kit } from '../..';
 import { createAlliancePositionPaginator, mutationCreateAlliancePositionArgs } from '../../interfaces/mutations/alliancePosition';
-import { allliancePosition } from '../../interfaces/queries/alliance';
+import { alliancePosition } from '../../interfaces/queries/alliance';
 import GraphQL from '../../services/GraphQL';
 
 export interface Parameters {
@@ -30,7 +30,7 @@ export interface Parameters {
  * @param {boolean} paginator If true it will return paginator info
  * @return {Promise<allliancePosition| createAlliancePositionPaginator>}
  */
-export default async function createAlliancePositionMutation(this: Kit, params: Parameters, query: string, apiKey: string, paginator?: false): Promise<allliancePosition>;
+export default async function createAlliancePositionMutation(this: Kit, params: Parameters, query: string, apiKey: string, paginator?: false): Promise<alliancePosition>;
 export default async function createAlliancePositionMutation(this: Kit, params: Parameters, query: string, apiKey: string, paginator: true): Promise<createAlliancePositionPaginator>;
 export default async function createAlliancePositionMutation(
   this: Kit,
@@ -38,7 +38,7 @@ export default async function createAlliancePositionMutation(
   query: string,
   apiKey: string,
   paginator?: boolean,
-): Promise<allliancePosition | createAlliancePositionPaginator> {
+): Promise<alliancePosition | createAlliancePositionPaginator> {
   const argsToParameters = GraphQL.generateParameters(params as mutationCreateAlliancePositionArgs);
 
   const res = await GraphQL.makeMutationCall(`
@@ -74,5 +74,5 @@ export default async function createAlliancePositionMutation(
     return res.data.createAlliancePosition as createAlliancePositionPaginator;
 
 
-  return res.data.createAlliancePosition as allliancePosition;
+  return res.data.createAlliancePosition as alliancePosition;
 }

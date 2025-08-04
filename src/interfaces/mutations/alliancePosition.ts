@@ -1,29 +1,29 @@
 import { Maybe, Scalars } from "..";
 import { paginatorInfo } from "../other";
-import { alliancePositionEnum, allliancePosition } from "../queries/alliance";
+import { alliancePositionEnum, alliancePosition } from "../queries/alliance";
 
 export type assignAlliancePositionPaginator = {
     __typename?: 'assignAlliancePositionPaginator'
     paginatorInfo: paginatorInfo
-    data: allliancePosition
+    data: alliancePosition
 }
 
 export type createAlliancePositionPaginator = {
     __typename?: 'createAlliancePositionPaginator'
     paginatorInfo: paginatorInfo
-    data: allliancePosition
+    data: alliancePosition
 }
 
 export type deleteAlliancePositionPaginator = {
     __typename?: 'deleteAlliancePositionPaginator'
     paginatorInfo: paginatorInfo
-    data: allliancePosition
+    data: alliancePosition
 }
 
 export type editAlliancePositionPaginator = {
     __typename?: 'editAlliancePositionPaginator'
     paginatorInfo: paginatorInfo
-    data: allliancePosition
+    data: alliancePosition
 }
 
 export type mutationAssignAlliancePositionArgs = {

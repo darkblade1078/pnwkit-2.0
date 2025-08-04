@@ -1,6 +1,6 @@
 import { Kit } from '../..';
 import { assignAlliancePositionPaginator, mutationAssignAlliancePositionArgs } from '../../interfaces/mutations/alliancePosition';
-import { alliancePositionEnum, allliancePosition } from '../../interfaces/queries/alliance';
+import { alliancePositionEnum, alliancePosition } from '../../interfaces/queries/alliance';
 import GraphQL from '../../services/GraphQL';
 
 export interface Parameters {
@@ -14,9 +14,9 @@ export interface Parameters {
  * @param {Parameters} params Query parameters to customize your results
  * @param {string} query The graphql query to get info with
  * @param {boolean} paginator If true it will return paginator info
- * @return {Promise<allliancePosition| assignAlliancePositionPaginator>}
+ * @return {Promise<alliancePosition| assignAlliancePositionPaginator>}
  */
-export default async function assignAlliancePositionMutation(this: Kit, params: Parameters, query: string, apiKey: string, paginator?: false): Promise<allliancePosition>;
+export default async function assignAlliancePositionMutation(this: Kit, params: Parameters, query: string, apiKey: string, paginator?: false): Promise<alliancePosition>;
 export default async function assignAlliancePositionMutation(this: Kit, params: Parameters, query: string, apiKey: string, paginator: true): Promise<assignAlliancePositionPaginator>;
 export default async function assignAlliancePositionMutation(
   this: Kit,
@@ -24,7 +24,7 @@ export default async function assignAlliancePositionMutation(
   query: string,
   apiKey: string,
   paginator?: boolean,
-): Promise<allliancePosition | assignAlliancePositionPaginator> {
+): Promise<alliancePosition | assignAlliancePositionPaginator> {
   const argsToParameters = GraphQL.generateParameters(params as mutationAssignAlliancePositionArgs);
 
   const res = await GraphQL.makeMutationCall(`
@@ -60,5 +60,5 @@ export default async function assignAlliancePositionMutation(
     return res.data.assignAlliancePosition as assignAlliancePositionPaginator;
 
 
-  return res.data.assignAlliancePosition as allliancePosition;
+  return res.data.assignAlliancePosition as alliancePosition;
 }

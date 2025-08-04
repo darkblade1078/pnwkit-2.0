@@ -7,4 +7,5 @@ export type apiKeyDetails = {
     key: Maybe<string>
     requests: Maybe<Scalars['Int']>
     max_requests: Maybe<Scalars['Int']>
+    permission_bits: Maybe<Scalars['Int']>
 }

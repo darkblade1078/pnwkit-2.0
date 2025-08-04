@@ -42,7 +42,7 @@ export enum alliancePositionEnum {
     Leader = 'LEADER'
 }
 
-export type allliancePosition = {
+export type alliancePosition = {
     id?: Maybe<Scalars['String']>
     date?: Maybe<Scalars['DateTimeAuto']>
     alliance_id?: Maybe<Scalars['ID']>
@@ -84,6 +84,7 @@ export type alliance = {
     nations?: Maybe<Array<nation>>
     average_score?: Maybe<Scalars['Float']>
     treaties?: Array<treaty>
+    alliance_positions?: Maybe<Array<Maybe<alliancePosition>>>
     accept_members?: Maybe<Scalars['Boolean']>
     flag?: Maybe<Scalars['String']>
     forum_link?: Maybe<Scalars['String']>

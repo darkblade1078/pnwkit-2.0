@@ -2,7 +2,7 @@ import { Maybe, Scalars } from "..";
 import { award } from "../data/other";
 import { militaryResearch } from '../data/war';
 import { paginatorInfo, sortOrder } from "../other";
-import { alliance, alliancePositionEnum, allliancePosition } from "./alliance";
+import { alliance, alliancePositionEnum, alliancePosition } from "./alliance";
 import { bankrec } from "./bank";
 import { baseballTeam } from "./baseball";
 import { bounty } from "./bounty";
@@ -140,7 +140,7 @@ export type nation = {
     alliance_id?: Maybe<Scalars['ID']>
     alliance_position?: Maybe<alliancePositionEnum>
     alliance_position_id: Maybe<Scalars['ID']>
-    alliance_position_info: Maybe<allliancePosition>
+    alliance_position_info: Maybe<alliancePosition>
     alliance?: Maybe<alliance>
     nation_name?: Maybe<Scalars['String']>
     leader_name?: Maybe<Scalars['String']>
