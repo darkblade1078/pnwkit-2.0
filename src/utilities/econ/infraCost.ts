@@ -10,14 +10,16 @@ import getPercentage from "../other/getPercentage";
  * @param {boolean} AEC If you have Advanced Engineering Corps
  * @param {boolean} URB If you have Urbanization
  * @param {boolean} GSA If you have Government Agency Support
+ * @param {boolean} BDA If you have Bureau of Domestic Affairs
  * @returns {number} The cost of infra
  */
-export default function infraCost(startingAmount: number, endingAmount: number, cities: number, CCE: boolean, AEC: boolean, URB: boolean, GSA: boolean): number {
+export default function infraCost(startingAmount: number, endingAmount: number, cities: number, CCE: boolean, AEC: boolean, URB: boolean, GSA: boolean, BDA: boolean): number {
 
   let infraPrice = infraCostFormula(startingAmount, endingAmount);
   let percentage = 100;
   percentage -= (CCE && AEC) ? percentage = 10 : (CCE ? 5 : 0);
-  percentage -= (URB && GSA ? 7.5 : (URB ? 5 : 0));
+  percentage -= URB ? BDA ? 8.75 : GSA ? 7.5 : 5 : 0
+
 
   infraPrice = getPercentage(infraPrice, percentage);
 

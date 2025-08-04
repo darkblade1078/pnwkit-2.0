@@ -7,9 +7,10 @@ import getPercentage from "../other/getPercentage";
  * @param {resourcePrices} resourcePrices The prices of each resource
  * @param {boolean} TA If you have Technology Advancement
  * @param {boolean} GSA If you have Government Support Agency
+ * @param {boolean} BDA If you have Bureau of Domestic Affairs
  * @returns {number} The cost of the project
  */
-export default function projectCost(project: projects, resourcePrices: resourcePrices, TA: boolean, GSA: boolean): number {
+export default function projectCost(project: projects, resourcePrices: resourcePrices, TA: boolean, GSA: boolean, BDA: boolean): number {
 
     let key: keyof typeof resourcePrices;
     for (key in resourcePrices) {
@@ -17,7 +18,7 @@ export default function projectCost(project: projects, resourcePrices: resourceP
         if (!resourcePrices[key]) throw new Error(`PnwKit: missing resource: ${key}`);
     }
 
-    let percentage = 100 - ((TA && GSA) ? 7.5 : (TA ? 5 : 0));
+    let percentage = 100 - (TA ? BDA ? 8.75 : GSA ? 7.5 : 5 : 0)
     let price = 0;
 
     switch (project) {
@@ -39,15 +40,15 @@ export default function projectCost(project: projects, resourcePrices: resourceP
             break;
 
         case projects.AS:
-            price = getPercentage(10_000_000 + (resourcePrices.coal * 500) + (resourcePrices.iron * 500) + (resourcePrices.oil * 500) + (resourcePrices.bauxite * 500) + (resourcePrices.oil * 500) +(resourcePrices.lead * 500), percentage);
+            price = getPercentage(10_000_000 + (resourcePrices.coal * 500) + (resourcePrices.iron * 500) + (resourcePrices.oil * 500) + (resourcePrices.bauxite * 500) + (resourcePrices.oil * 500) + (resourcePrices.lead * 500), percentage);
             break;
 
         case projects.BW:
-            price = getPercentage(10_000_000 + (resourcePrices.coal * 500) + (resourcePrices.iron * 500) + (resourcePrices.oil * 500) + (resourcePrices.bauxite * 500) + (resourcePrices.oil * 500) +(resourcePrices.lead * 500), percentage);
+            price = getPercentage(10_000_000 + (resourcePrices.coal * 500) + (resourcePrices.iron * 500) + (resourcePrices.oil * 500) + (resourcePrices.bauxite * 500) + (resourcePrices.oil * 500) + (resourcePrices.lead * 500), percentage);
             break;
 
         case projects.BDA:
-            price = getPercentage(20_000_000 + (resourcePrices.food * 500_000) + (resourcePrices.coal * 8000) + (resourcePrices.iron * 8000) + (resourcePrices.oil * 8000) + (resourcePrices.bauxite * 8000) + (resourcePrices.oil * 8000) +(resourcePrices.lead * 8000), percentage);
+            price = getPercentage(20_000_000 + (resourcePrices.food * 500_000) + (resourcePrices.coal * 8000) + (resourcePrices.iron * 8000) + (resourcePrices.oil * 8000) + (resourcePrices.bauxite * 8000) + (resourcePrices.oil * 8000) + (resourcePrices.lead * 8000), percentage);
             break;
 
         case projects.CoCE:
@@ -59,7 +60,7 @@ export default function projectCost(project: projects, resourcePrices: resourceP
             break;
 
         case projects.EGR:
-            price = getPercentage(10_000_000 + (resourcePrices.coal * 500) + (resourcePrices.iron * 500) + (resourcePrices.oil * 500) + (resourcePrices.bauxite * 500) + (resourcePrices.oil * 500) +(resourcePrices.lead * 500), percentage);
+            price = getPercentage(10_000_000 + (resourcePrices.coal * 500) + (resourcePrices.iron * 500) + (resourcePrices.oil * 500) + (resourcePrices.bauxite * 500) + (resourcePrices.oil * 500) + (resourcePrices.lead * 500), percentage);
             break;
 
         case projects.FS:
@@ -91,7 +92,7 @@ export default function projectCost(project: projects, resourcePrices: resourceP
             break;
 
         case projects.IW:
-            price = getPercentage(10_000_000 + (resourcePrices.coal * 500) + (resourcePrices.iron * 500) + (resourcePrices.oil * 500) + (resourcePrices.bauxite * 500) + (resourcePrices.oil * 500) +(resourcePrices.lead * 500), percentage);
+            price = getPercentage(10_000_000 + (resourcePrices.coal * 500) + (resourcePrices.iron * 500) + (resourcePrices.oil * 500) + (resourcePrices.bauxite * 500) + (resourcePrices.oil * 500) + (resourcePrices.lead * 500), percentage);
             break;
 
     case projects.MD:
@@ -99,7 +100,7 @@ export default function projectCost(project: projects, resourcePrices: resourceP
             break;
 
         case projects.MI:
-            price = getPercentage(10_000_000 + (resourcePrices.food * 50000) + (resourcePrices.coal * 500) + (resourcePrices.iron * 500) + (resourcePrices.oil * 500) + (resourcePrices.bauxite * 500) + (resourcePrices.oil * 500) +(resourcePrices.lead * 500), percentage);
+            price = getPercentage(10_000_000 + (resourcePrices.food * 50000) + (resourcePrices.coal * 500) + (resourcePrices.iron * 500) + (resourcePrices.oil * 500) + (resourcePrices.bauxite * 500) + (resourcePrices.oil * 500) + (resourcePrices.lead * 500), percentage);
             break;
 
         case projects.MS:
@@ -131,7 +132,7 @@ export default function projectCost(project: projects, resourcePrices: resourceP
             break;
 
         case projects.PE:
-            price = getPercentage(25_000_000 + (resourcePrices.coal * 7500) + (resourcePrices.iron * 7500) + (resourcePrices.oil * 7500) + (resourcePrices.bauxite * 7500) + (resourcePrices.oil * 7500) +(resourcePrices.lead * 7500), percentage);
+            price = getPercentage(25_000_000 + (resourcePrices.coal * 7500) + (resourcePrices.iron * 7500) + (resourcePrices.oil * 7500) + (resourcePrices.bauxite * 7500) + (resourcePrices.oil * 7500) + (resourcePrices.lead * 7500), percentage);
             break;
 
         case projects.PB:
@@ -167,7 +168,7 @@ export default function projectCost(project: projects, resourcePrices: resourceP
             break;
 
         case projects.UEP:
-            price = getPercentage(25_000_000 + (resourcePrices.uranium * 2500) + (resourcePrices.coal * 500) + (resourcePrices.iron * 500) + (resourcePrices.oil * 500) + (resourcePrices.bauxite * 500) + (resourcePrices.oil * 500) +(resourcePrices.lead * 500), percentage);
+            price = getPercentage(25_000_000 + (resourcePrices.uranium * 2500) + (resourcePrices.coal * 500) + (resourcePrices.iron * 500) + (resourcePrices.oil * 500) + (resourcePrices.bauxite * 500) + (resourcePrices.oil * 500) + (resourcePrices.lead * 500), percentage);
             break;
 
         case projects.AC:

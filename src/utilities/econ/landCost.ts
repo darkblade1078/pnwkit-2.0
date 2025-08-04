@@ -8,17 +8,18 @@ import getPercentage from "../other/getPercentage";
  * @param {number} cities How many cities you are building this infra in
  * @param {boolean} ALA If you have Arable Land Agency
  * @param {boolean} AEC If you have Advanced Engineering Corps
- * @param {boolean} URB If you have Rapid Expansion
+ * @param {boolean} RE If you have Rapid Expansion
  * @param {boolean} GSA If you have Government Agency Support
+ * @param {boolean} BDA If you have Bureau of Domestic Affairs
  * @returns {number} The cost of land
  */
-export default function landCost(startingAmount: number, endingAmount: number, cities: number, ALA: boolean, AEC: boolean, RE: boolean, GSA: boolean): number {
+export default function landCost(startingAmount: number, endingAmount: number, cities: number, ALA: boolean, AEC: boolean, RE: boolean, GSA: boolean, BDA: boolean): number {
 
     let landPrice = landCostFormula(startingAmount, endingAmount);
     let percentage = 100;
 
     percentage -= (ALA && AEC) ? percentage = 10 : (ALA ? 5 : 0);
-    percentage -= (RE && GSA ? 7.5 : (RE ? 5 : 0));
+    percentage -= RE ? BDA ? 8.75 : GSA ? 7.5 : 5 : 0
 
     landPrice = getPercentage(landPrice, percentage);
 
