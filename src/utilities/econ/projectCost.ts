@@ -94,6 +94,10 @@ export default function projectCost(project: projects, resourcePrices: resourceP
             price = getPercentage(10_000_000 + (resourcePrices.coal * 500) + (resourcePrices.iron * 500) + (resourcePrices.oil * 500) + (resourcePrices.bauxite * 500) + (resourcePrices.oil * 500) +(resourcePrices.lead * 500), percentage);
             break;
 
+    case projects.MD:
+            price = getPercentage(10_000_000 + (resourcePrices.steel * 10000) + (resourcePrices.aluminum * 10000) + (resourcePrices.munitions * 10000) + (resourcePrices.gasoline * 10000), percentage);
+            break;
+
         case projects.MI:
             price = getPercentage(10_000_000 + (resourcePrices.food * 50000) + (resourcePrices.coal * 500) + (resourcePrices.iron * 500) + (resourcePrices.oil * 500) + (resourcePrices.bauxite * 500) + (resourcePrices.oil * 500) +(resourcePrices.lead * 500), percentage);
             break;
@@ -108,6 +112,10 @@ export default function projectCost(project: projects, resourcePrices: resourceP
 
         case projects.MRL:
             price = getPercentage(200_000_000 + (resourcePrices.oil * 20000) + (resourcePrices.aluminum * 20000) + (resourcePrices.munitions * 20000) + (resourcePrices.steel * 20000) + (resourcePrices.gasoline * 20000) + (resourcePrices.uranium * 20000), percentage);
+            break;
+
+        case projects.MRC:
+            price = getPercentage(100_000_000 + (resourcePrices.steel * 10000) + (resourcePrices.aluminum * 10000) + (resourcePrices.munitions * 10000) + (resourcePrices.gasoline * 10000), percentage);
             break;
 
         case projects.ML:

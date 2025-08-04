@@ -1,25 +1,26 @@
+import checkProjectBit from './econ/checkProjectBit';
 import cityCost from './econ/cityCost';
+import { crime, disease, pollution, pollutionIndex } from './econ/cityEffects';
+import cityIncome from './econ/cityIncome';
 import foodConsumption from './econ/foodConsumption';
 import foodProduction from './econ/foodProduction';
 import infraCost from './econ/infraCost';
 import landCost from './econ/landCost';
+import projectCost from './econ/projectCost';
+import researchCost from './econ/researchCost';
 import resourceProduction from './econ/resourceProduction';
 import accurateRounding from './other/accurateRounding';
+import getDaysBetween from './other/getDaysBetween';
 import getPercentage from './other/getPercentage';
-import spyRange from './war/spyRange';
-import warRange from './war/warRange';
-import espionageOdds from './war/espionageOdds';
-import { groundBattle, airBattle, seaBattle } from './war/battleSimulations';
-import { pollution, pollutionIndex, crime, disease } from './econ/cityEffects';
-import projectCost from './econ/projectCost';
-import cityIncome from './econ/cityIncome';
+import activeWars from './war/activeWars';
 import allianceMMR from './war/allianceMMR';
+import allianceTiering from './war/allianceTiering';
+import { airBattle, groundBattle, seaBattle } from './war/battleSimulations';
+import espionageOdds from './war/espionageOdds';
 import nationMMR from './war/nationMMR';
 import sphereTiering from './war/sphereTiering';
-import activeWars from './war/activeWars';
-import allianceTiering from './war/allianceTiering';
-import checkProjectBit from './econ/checkProjectBit';
-import getDaysBetween from './other/getDaysBetween';
+import spyRange from './war/spyRange';
+import warRange from './war/warRange';
 
 export default class PnwKitUtils {
     getPercentage = getPercentage;
@@ -49,5 +50,5 @@ export default class PnwKitUtils {
     allianceTiering = allianceTiering;
     checkProjectBit = checkProjectBit;
     getDaysBetween = getDaysBetween;
-    
+    researchCost = researchCost;
 }

@@ -130,3 +130,14 @@ export type tiering = {
     45: number;
     50: number;
 }
+
+export enum researchType {
+    GROUND_CAPACITY = 'ground_capacity',
+    GROUND_COST = 'ground_cost',
+    AIR_CAPACITY = 'air_capacity',
+    AIR_COST = 'air_cost',
+    NAVAL_CAPACITY = 'naval_capacity',
+    NAVAL_COST = 'naval_cost'
+}
+
+export type militaryResearch = Record<researchType, number>
